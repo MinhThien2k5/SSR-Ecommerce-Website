@@ -1,0 +1,33 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug
+
+block main 
+    .container.my-3
+        .row
+            .col-12 
+                +box-head("Thông tin tài khoản")
+        
+        .row.justify-content-center
+            .col-md-8
+                .card.shadow-sm
+                    .card-body
+                        dl.row
+                            dt.col-sm-4 Họ và tên
+                            dd.col-sm-8 #{user.fullName}
+
+                            dt.col-sm-4 Email
+                            dd.col-sm-8 #{user.email}
+
+                            dt.col-sm-4 Trạng thái
+                            dd.col-sm-8 
+                                if user.status === 'active'
+                                    span.badge.bg-success Đang hoạt động
+                                else 
+                                    span.badge.bg-secondary Không hoạt động
+
+                            dt.col-sm-4 Ngày tạo
+                            dd.col-sm-8 #{user.createdAt.toLocaleString('vi-VN')}
+
+                            dt.col-sm-4 Cập nhật lần cuối
+                            dd.col-sm-8 #{user.updatedAt.toLocaleString('vi-VN')}
+

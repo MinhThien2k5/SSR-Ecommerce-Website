@@ -1,0 +1,17 @@
+extends ../../layouts/default.pug 
+include ../../mixins/box-head.pug
+include ../../mixins/product-layout.pug
+
+block main 
+    .container.my-3
+        .row 
+            .col-12 
+                +box-head("Kết quả tìm kiếm")
+
+        if (products && products.length > 0)
+           
+            +product-grid(products)
+        else
+            .row
+                .col-12.text-center
+                    h3 Không tìm thấy sản phẩm nào phù hợp với từ khóa này
