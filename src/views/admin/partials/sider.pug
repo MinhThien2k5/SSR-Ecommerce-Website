@@ -1,28 +1,49 @@
-.sider 
-    .inner-menu 
-        ul 
-            li 
-                a(href=`${prefixAdmin}/dashboard`) Tổng quan
+aside.sidebar
+    header.sidebar-header
+        a.header-logo(href=`#`)
+            img(src="/image/logo.png" alt="Logo")
+        button.toggler.sidebar-toggler
+            span.material-symbols-rounded chevron_left
+
+    nav.sidebar-nav
+        ul.nav-list.primary-nav
+            li.nav-item
+                a.nav-link(href=`${prefixAdmin}/dashboard`)
+                    span.nav-icon.material-symbols-rounded dashboard
+                    span.nav-label Dashboard
             if (role.permissions.includes("products-category_view"))
-                li 
-                    a(href=`${prefixAdmin}/products-category`) Danh mục sản phẩm
-    
-            if (role.permissions.includes("products_view"))            
-                li 
-                    a(href=`${prefixAdmin}/products`) Sản phẩm
-         
+                li.nav-item
+                    a.nav-link(href=`${prefixAdmin}/products-category`)
+                        span.nav-icon.material-symbols-rounded category
+                        span.nav-label Danh mục sản phẩm
+            if (role.permissions.includes("products_view"))
+                li.nav-item
+                    a.nav-link(href=`${prefixAdmin}/products`)
+                        span.nav-icon.material-symbols-rounded inventory
+                        span.nav-label Sản phẩm
             if (role.permissions.includes("roles_view"))
-                li 
-                    a(href=`${prefixAdmin}/roles`) Nhóm quyền
-       
-            if (role.permissions.includes("roles_permissions"))               
-                li 
-                    a(href=`${prefixAdmin}/roles/permissions`) Phân quyền
-        
-            if (role.permissions.includes("accounts_view"))   
-                li 
-                    a(href=`${prefixAdmin}/accounts`) Tài khoản
-            li 
-                a(href=`${prefixAdmin}/settings/general`) Cài đặt chung
-            li 
-                a(href=`${prefixAdmin}/auth/logout`) Đăng xuất
+                li.nav-item
+                    a.nav-link(href=`${prefixAdmin}/roles`)
+                        span.nav-icon.material-symbols-rounded group
+                        span.nav-label Nhóm quyền
+            if (role.permissions.includes("roles_permissions"))
+                li.nav-item
+                    a.nav-link(href=`${prefixAdmin}/roles/permissions`)
+                        span.nav-icon.material-symbols-rounded security
+                        span.nav-label Phân quyền
+            if (role.permissions.includes("accounts_view"))
+                li.nav-item
+                    a.nav-link(href=`${prefixAdmin}/accounts`)
+                        span.nav-icon.material-symbols-rounded account_circle
+                        span.nav-label Tài khoản
+            li.nav-item
+                a.nav-link(href=`${prefixAdmin}/settings/general`)
+                    span.nav-icon.material-symbols-rounded settings
+                    span.nav-label Cài đặt chung
+
+        ul.nav-list.secondary-nav
+            li.nav-item
+                a.nav-link(href=`${prefixAdmin}/auth/logout`)
+                    span.nav-icon.material-symbols-rounded logout
+                    span.nav-label Đăng xuất
+

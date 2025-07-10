@@ -83,3 +83,25 @@ if (checkboxMulti) {
     });
   });
 }
+
+const sidebar = document.querySelector(".sidebar");
+const sidebarToggle = document.querySelector(".sidebar-toggler");
+const main = document.querySelector(".main");
+
+// Lấy trạng thái đã lưu trong localStorage
+if (localStorage.getItem("sidebar-collapsed") === "true") {
+  sidebar.classList.add("collapsed");
+  main.classList.add("expanded");
+}
+
+// Bắt sự kiện khi click toggle
+if (sidebarToggle) {
+  sidebarToggle.addEventListener("click", () => {
+    sidebar.classList.toggle("collapsed");
+    main.classList.toggle("expanded");
+
+    // Lưu trạng thái mới vào localStorage
+    const isCollapsed = sidebar.classList.contains("collapsed");
+    localStorage.setItem("sidebar-collapsed", isCollapsed);
+  });
+}

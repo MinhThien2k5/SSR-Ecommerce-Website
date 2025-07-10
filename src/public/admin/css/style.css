@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 /* ========= Layout Basics ========= */
 :root {
   --primary-color: #007bff;
@@ -11,75 +12,142 @@
 }
 
 body {
-  margin: 0;
+  min-height: 100vh;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-  background: #f8f9fa;
+  background: linear-gradient(#f1faff, #cbe4ff);
   color: #333;
 }
 
-/* ========= Header ========= */
-.header {
-  width: 180px;
-  background: var(--background-dark);
-  padding: 12px var(--padding-base);
-  position: fixed;
-  top: 0;
-  z-index: 999;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+/* ========= Sidebar ========= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
 }
 
-.header .inner-logo a {
-  color: var(--text-light);
-  text-decoration: none;
-  font-size: 18px; /* hoặc 16px, tùy bạn */
-  font-weight: bold;
+.sidebar {
+  width: 270px;
+  position: fixed;
+  margin: 16px;
+  border-radius: 16px;
+  background: #151a2d;
+  height: calc(100vh - 24px);
+  transition: 0.4s ease;
+}
+
+.sidebar.collapsed {
+  width: 85px;
+}
+
+.sidebar-header {
+  position: relative;
+  display: flex;
+  padding: 25px 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.sidebar-header .header-logo img {
+  width: 46px;
+  height: 46px;
+  display: block;
+  object-fit: contain;
+  border-radius: 50%;
+}
+
+.sidebar-header .toggler {
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  border: none;
+  color: #151a2d;
   display: flex;
   align-items: center;
-  white-space: nowrap; /* đảm bảo không xuống dòng */
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 8px;
+  background: #fff;
+  transition: 0.4s ease;
+  right: 20px;
+  top: 30px;
 }
 
-/* ========= Sidebar ========= */
-.body .sider {
-  width: 180px;
-  background: var(--background-medium);
-  color: var(--text-light);
-  position: fixed;
-  top: 40px;
-  left: 0;
-  bottom: 0;
-  padding-top: var(--padding-base);
-  overflow-y: auto;
+.sidebar.collapsed .sidebar-header .toggler {
+  transform: translate(-4px, 65px);
 }
 
-.sider .inner-menu ul {
+.sidebar-header .toggler:hover {
+  background: #dde4fb;
+}
+
+.sidebar-header .toggler span {
+  font-size: 1.75rem;
+  transition: 0.4s ease;
+}
+
+.sidebar.collapsed .sidebar-header .toggler span {
+  transform: rotate(180deg);
+}
+
+.sidebar-nav .nav-list {
   list-style: none;
-  padding: 0;
-  margin: 0;
+  display: flex;
+  gap: 4px;
+  padding: 0 15px;
+  flex-direction: column;
+  transform: translateY(15px);
+  transition: 0.4s ease;
 }
 
-.sider .inner-menu ul li a {
-  color: var(--text-light);
-  display: block;
-  padding: 10px 15px;
-  border-bottom: 1px solid var(--border-color);
+.sidebar.collapsed .sidebar-nav .nav-list {
+  transform: translateY(65px);
+}
+
+.sidebar-nav .nav-link {
+  color: #fff;
+  display: flex;
+  padding: 12px 15px;
+  gap: 12px;
+  border-radius: 8px;
+  align-items: center;
   text-decoration: none;
-  transition: background var(--transition-fast);
+  transition: 0.4s ease;
 }
 
-.sider .inner-menu ul li a:hover {
-  background: #444;
+.sidebar-nav .nav-link:hover {
+  background: #fff;
+  color: #151a2d;
+}
+
+.sidebar-nav .nav-link .nav-label {
+  transition: opacity 0.4s ease;
+}
+
+.sidebar.collapsed .sidebar-nav .nav-link .nav-label {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-nav .secondary-nav {
+  position: absolute;
+  bottom: 30px;
+  width: 100%;
 }
 
 /* ========= Main Content ========= */
 .body .main {
-  margin: 20px var(--padding-base);
-  margin-left: 200px;
-  padding: var(--padding-base);
-  background: white;
-  border-radius: 8px;
+  margin-left: 300px;
+  padding: 30px;
+  background-color: #f9f9f9;
+  min-height: calc(100vh - 32px);
+  transition: margin-left var(--transition-fast);
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
+.body .main.expanded {
+  margin-left: 110px; /* khớp với sidebar.collapsed là 85px + padding */
+}
 /* ========= Pagination ========= */
 .pagination {
   display: flex;
