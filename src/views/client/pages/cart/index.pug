@@ -9,19 +9,19 @@ block main
     .container.my-3 
         .row 
             .col-12 
-                +box-head("Giỏ hàng")
+                +box-head("Cart Details")
         .row 
             .col-12 
                 table(class="table table-bordered")
                     thead 
                         tr 
-                            th STT
-                            th Ảnh 
-                            th Tên 
-                            th Giá
-                            th Số lượng
-                            th Tổng tiền   
-                            th Hành động
+                            th Number
+                            th Image 
+                            th Product
+                            th Price
+                            th Amount
+                            th Total Price   
+                            th Action
 
                     tbody 
                         if(cartDetail.products.length > 0)
@@ -51,13 +51,13 @@ block main
                                         a(
                                             href=`/cart/delete/${item.product_id}`
                                             class="btn btn-danger"
-                                        ) Xóa 
+                                        ) Delete
                         else 
-                            p Không có sản phẩm nào trong giỏ hàng. 
+                            p You have no products in your cart.
      
-                h3(class="text-right") Tổng đơn hàng: #{Number(cartDetail.totalPrice).toLocaleString("vi-VN")}VND
+                h3(class="text-right") Total: #{Number(cartDetail.totalPrice).toLocaleString("vi-VN")}VND
 
                 div(class="text-right mt-3")
-                    a(href="/checkout" class="btn btn-success") THANH TOÁN
+                    a(href="/checkout" class="btn btn-success") Buy
 
         script(src="/client/js/cart.js")

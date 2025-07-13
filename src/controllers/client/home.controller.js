@@ -11,7 +11,7 @@ module.exports.index = async (req, res) => {
     featured: true,
   })
     .sort({ position: "desc" })
-    .limit(8);
+    .limit(4);
 
   // Tính giá mới cho sản phẩm
   const newProductsFeatured = productHelper.priceNewProducts(productsFeatured);
@@ -22,7 +22,7 @@ module.exports.index = async (req, res) => {
     status: "active",
   })
     .sort({ position: "desc" })
-    .limit(6);
+    .limit(4);
 
   const newProductsNew = productHelper.priceNewProducts(productsNew);
 

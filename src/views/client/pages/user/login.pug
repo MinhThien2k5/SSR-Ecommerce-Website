@@ -7,7 +7,7 @@ block main
     .container.my-5 
         .row.justify-content-center
             .col-8
-                h1(class="text-center") Đăng nhập tài khoản
+                h1(class="text-center") Login to Your Account
                 form(
                     action=`/user/login`
                     method="POST"
@@ -23,7 +23,7 @@ block main
                         )
 
                     div(class="form-group") 
-                        label(for="password") Mật khẩu
+                        label(for="password") Password
                         input(
                             type="password"
                             class="form-control"
@@ -36,6 +36,6 @@ block main
                         button(
                             type="submit"
                             class="btn btn-primary btn-block"
-                        ) Đăng nhập
+                        ) Login
 
-                a(href="/user/password/forgot") Quên mật khẩu? 
+                a(href="/user/password/forgot") Forgot Password?

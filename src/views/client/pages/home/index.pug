@@ -6,12 +6,33 @@ include ../../mixins/alert.pug
 block main
     +alert-success(2000)
     +alert-error(2000)
+
+    .row(style="background: radial-gradient(#fff, #ffd6d6);") 
+        .col-5
+            h1 Give Your Workout<br>A New Style!
+            p
+                | Success isn't always about greatness. It's about consistency.
+                br
+                | Consistent hard work gains success. Greatness will come.
+            a(href="/products", class="btn") Shop Now &#x2794;
+            
+        .col-5
+            img.img-fluid(src="/image/cheer.jpg", alt="Workout Image")
+
+    .categories
+        .small-container
+            .row 
+                each category in categories
+                    .col-3
+                        a(href=`/products?category=${category.slug}`)
+                            img(src=category.thumbnail, alt=category.name, class="img-fluid")
+                            h3 #{category.name}
     
     .section-products-featured.my-5 
         .container
             .row 
                 .col-12 
-                    +box-head("Sản phẩm nổi bật")
+                    +box-head("Featured Products")
 
             +product-grid(productsFeatured)
 
@@ -19,8 +40,32 @@ block main
         .container
             .row 
                 .col-12 
-                    +box-head("Sản phẩm mới")
+                    +box-head("New Products")
     
             +product-grid(productsNew)
 
+    .offer
+        .small-container
+            .row 
+                .col-5.offer-img
+                    img(src="/image/exclusive.png")
+                .col-5
+                    p Exclusively Available on Our Website
+                    h1 Get the Best Deals
+                    small The Mi Smart Band 4 features a 39.9% larger (than Mi Band 3) AMOLED color full-touch display with adjustable brightness, so everything is clear as can be.
+                    br 
+                    a(href="" class='btn') Buy now &#8594;
 
+    .brands
+        .small-container
+            .row 
+                .col-2 
+                    img(src="/image/logo-godrej.png", alt="Brand Logo")
+                .col-2 
+                    img(src="/image/logo-oppo.png", alt="Brand Logo")
+                .col-2 
+                    img(src="/image/logo-coca-cola.png", alt="Brand Logo")
+                .col-2 
+                    img(src="/image/logo-paypal.png", alt="Brand Logo")
+                .col-2 
+                    img(src="/image/logo-philips.png", alt="Brand Logo")

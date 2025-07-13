@@ -15,35 +15,35 @@ aside.sidebar
                 li.nav-item
                     a.nav-link(href=`${prefixAdmin}/products-category`)
                         span.nav-icon.material-symbols-rounded category
-                        span.nav-label Danh mục sản phẩm
+                        span.nav-label Category
             if (role.permissions.includes("products_view"))
                 li.nav-item
                     a.nav-link(href=`${prefixAdmin}/products`)
                         span.nav-icon.material-symbols-rounded inventory
-                        span.nav-label Sản phẩm
+                        span.nav-label Products
             if (role.permissions.includes("roles_view"))
                 li.nav-item
                     a.nav-link(href=`${prefixAdmin}/roles`)
                         span.nav-icon.material-symbols-rounded group
-                        span.nav-label Nhóm quyền
+                        span.nav-label Roles
             if (role.permissions.includes("roles_permissions"))
                 li.nav-item
                     a.nav-link(href=`${prefixAdmin}/roles/permissions`)
                         span.nav-icon.material-symbols-rounded security
-                        span.nav-label Phân quyền
+                        span.nav-label Permissions
             if (role.permissions.includes("accounts_view"))
                 li.nav-item
                     a.nav-link(href=`${prefixAdmin}/accounts`)
                         span.nav-icon.material-symbols-rounded account_circle
-                        span.nav-label Tài khoản
+                        span.nav-label Accounts
             li.nav-item
                 a.nav-link(href=`${prefixAdmin}/settings/general`)
                     span.nav-icon.material-symbols-rounded settings
-                    span.nav-label Cài đặt chung
+                    span.nav-label Settings
 
         ul.nav-list.secondary-nav
             li.nav-item
                 a.nav-link(href=`${prefixAdmin}/auth/logout`)
                     span.nav-icon.material-symbols-rounded logout
-                    span.nav-label Đăng xuất
+                    span.nav-label Logout	
 
