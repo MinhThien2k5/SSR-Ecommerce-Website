@@ -5,10 +5,10 @@ block main
     if (role.permissions.includes("roles_view"))
         +alert-success(5000)
 
-        h1(class="mb-4") Nhóm quyền
+        h1(class="mb-4") Role Groups
 
         .card.mb-3 
-            .card-header Danh sách 
+            .card-header List 
             .card-body 
                 .row.mb-3
                     .col-8 
@@ -17,14 +17,14 @@ block main
                             a(
                                 href=`${prefixAdmin}/roles/create`
                                 class="btn btn-outline-success"
-                            ) + Thêm mới
+                            ) + Add New
                 table.table.table-hover.table-sm.table-bordered.align-middle
                     thead 
                         tr 
-                            th STT
-                            th Nhóm quyền
-                            th Mô tả ngắn
-                            th Hành động
+                            th No.
+                            th Role Group
+                            th Short Description
+                            th Actions
 
                     tbody 
                         if(records.length > 0)
@@ -37,17 +37,16 @@ block main
                                         a(
                                             class="btn btn-secondary btn-sm mr-1"
                                             href=`${prefixAdmin}/roles/detail/${item.id}`
-                                        ) Chi tiết
+                                        ) Details
                                         if (role.permissions.includes("roles_edit"))
                                             a(
                                                 class="btn btn-warning btn-sm"
                                                 href=`${prefixAdmin}/roles/edit/${item.id}`
-                                            ) Sửa
+                                            ) Edit
                                         if (role.permissions.includes("roles_delete"))
                                             button(
                                                 class="btn btn-danger btn-sm ml-1"
-                                            ) Xóa
+                                            ) Delete
                         else 
                             tr 
-                                td(colspan="4" class="text-center") Chưa có nhóm quyền nào được tạo.
-
+                                td(colspan="4" class="text-center") No role groups have been created.

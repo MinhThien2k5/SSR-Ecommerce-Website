@@ -1,12 +1,12 @@
 mixin sort()
     div(sort)
-            .d-flex.align-items-center.mt-2
-              select.form-control(name="sort" sort-select)
-                option(value="position-desc") Vị trí giảm dần
-                option(value="position-asc") Vị trí tăng dần
-                option(value="price-desc") Giá giảm dần
-                option(value="price-asc") Giá tăng dần
-                option(value="title-asc") Tiêu đề A - Z
-                option(value="title-desc") Tiêu đề Z - A
+        .d-flex.align-items-center.mt-2
+            select.form-control(name="sort" sort-select)
+                option(value="position-desc") Position Descending
+                option(value="position-asc") Position Ascending
+                option(value="price-desc") Price High to Low
+                option(value="price-asc") Price Low to High
+                option(value="title-asc") Title A - Z
+                option(value="title-desc") Title Z - A
 
-              button.btn.btn-danger.m-2.mr-2(sort-clear) Clear
+            button.btn.btn-danger.m-2.mr-2(sort-clear) Clear

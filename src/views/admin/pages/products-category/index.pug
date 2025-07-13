@@ -10,30 +10,30 @@ include ../../mixins/table-tree.pug
 
 block main
   if (role.permissions.includes("products-category_view"))
-    h1 Danh mục sản phẩm
+    h1 Product Categories
 
     .card.mb-3
-      .card-header Danh mục sản phẩm
+      .card-header Product Categories
       .card-body
         .row.mb-3
-          .col-8 Lựa chọn chức năng
+          .col-8 Function Options
           if (role.permissions.includes("products-category_create"))
             .col-4.text-end
-              a.btn.btn-outline-success(href=`${prefixAdmin}/products-category/create`) + Thêm mới
+              a.btn.btn-outline-success(href=`${prefixAdmin}/products-category/create`) + Add New
 
         table.table.table-hover.table-sm.table-bordered.text-center.align-middle(checkbox-multi)
               thead
                 tr
                   th
                     input(type="checkbox" name="checkall")
-                  th STT
-                  th Hình ảnh
-                  th Tiêu đề
-                  th Vị trí
-                  th Trạng thái
-                  th Người tạo
-                  th Người cập nhật
-                  th Hành động
+                  th No.
+                  th Image
+                  th Title
+                  th Position
+                  th Status
+                  th Created By
+                  th Updated By
+                  th Actions
               tbody
                 +table-tree(records)
 

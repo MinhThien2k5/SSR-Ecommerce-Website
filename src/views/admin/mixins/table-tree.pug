@@ -20,30 +20,30 @@ mixin table-tree(items, level=1)
                 if (role.permissions.includes("products-category_edit"))
                     if item.status == "active"
                         button.badge.bg-success(
-                        button-change-status 
-                        data-status=item.status 
-                        data-id=item._id
-                        ) Hoạt động
+                            button-change-status 
+                            data-status=item.status 
+                            data-id=item._id
+                        ) Active
                     else
                         button.badge.bg-danger(
-                        button-change-status 
-                        data-status=item.status 
-                        data-id=item._id
-                        ) Dừng hoạt động
+                            button-change-status 
+                            data-status=item.status 
+                            data-id=item._id
+                        ) Inactive
             td #{item.creator}
             td #{item.updater}
             td
                 a.btn.btn-dark.btn-sm.ml-1(
                     href=`${prefixAdmin}/products-category/detail/${item._id}`
-                ) Chi tiết
+                ) Details
                 if (role.permissions.includes("products-category_edit"))
                     a.btn.btn-warning.btn-sm.ml-1(
                         href=`${prefixAdmin}/products-category/edit/${item._id}`
-                    ) Sửa
+                    ) Edit
                 if (role.permissions.includes("products-categoy_delete"))                
                     button.btn.btn-danger.btn-sm.ml-1(
                         button-delete 
                         data-id=item._id
-                    ) Xóa   
-            if item.children && item.children.length > 0
-                +table-tree(item.children, level + 1)
+                    ) Delete   
+        if item.children && item.children.length > 0
+            +table-tree(item.children, level + 1)

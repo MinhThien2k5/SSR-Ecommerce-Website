@@ -6,7 +6,7 @@ block main
         +alert-success(5000)
         +alert-error(5000)
 
-        h1(class="mb-4") Cập nhật tài khoản 
+        h1(class="mb-4") Edit User Account
 
         if(roles)
             form(
@@ -15,7 +15,7 @@ block main
                 enctype="multipart/form-data"
             )
                 div(class="form-group") 
-                    label(for="fullName") Họ tên *
+                    label(for="fullName") Name *
                     input(
                         type="text"
                         class="form-control"
@@ -36,7 +36,7 @@ block main
                     )
 
                 div(class="form-group") 
-                    label(for="password") Mật khẩu *
+                    label(for="password") Password *
                     input(
                         type="password"
                         class="form-control"
@@ -45,7 +45,7 @@ block main
                     )
 
                 div(class="form-group") 
-                    label(for="phone") Số điện thoại  
+                    label(for="phone") Phone  
                     input(
                         type="phone"
                         class="form-control"
@@ -74,7 +74,7 @@ block main
                     )
 
                 div(class="form-group") 
-                    label(for="role_id") Phân quyền  
+                    label(for="role_id") Role *  
                     select(name="role_id" id="role_id" class="form-select")
                         option(disabled) -- Chọn -- 
                         each item in roles 
@@ -92,7 +92,7 @@ block main
                         value="active"
                         checked=(data.status == "active" ? true : false)
                     )
-                    label(for="statusActive" class="form-check-label") Hoạt động 
+                    label(for="statusActive" class="form-check-label") Active 
 
                 div(class="form-group form-check form-check-inline") 
                     input(
@@ -103,20 +103,20 @@ block main
                         value="inactive"
                         checked=(data.status == "inactive" ? true : false)
                     )
-                    label(for="statusInActive" class="form-check-label") Dừng hoạt động
+                    label(for="statusInActive" class="form-check-label") Inactive
             
 
                 div(class="form-group")
                     button(
                         type="submit"
                         class="btn btn-primary"
-                    ) Cập nhật
+                    ) Update Account
 
         else 
-            p Vui lòng chọn quyền để cập nhật tài khoản
+            p Please create a role first.
             p 
                 a(
                     href=`${prefixAdmin}/accounts/create`
                     class="btn btn-outline-success"
-                ) + Tạo nhóm quyền
+                ) + Create New Role
 

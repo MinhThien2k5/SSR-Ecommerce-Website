@@ -7,7 +7,7 @@ block main
         +alert-error(5000)
         +alert-success(5000)
             
-        h1(class="mb-4") Chỉnh sửa sản phẩm 
+        h1(class="mb-4") Product Edit
 
         form(
             action=`${prefixAdmin}/products/edit/${product.id}?_method=PATCH`
@@ -16,7 +16,7 @@ block main
             enctype="multipart/form-data"
         )
             div(class="form-group") 
-                label(for="title") Tiêu đề
+                label(for="title") Title
                 input(
                     type="text"
                     class="form-control"
@@ -27,13 +27,13 @@ block main
                 )
 
             div(class="form-group") 
-                label(for="product_category_id") Danh mục
+                label(for="product_category_id") Category
                 select(
                     name="product_category_id"
                     id="product_category_id"
                     class="form-control"
                 ) 
-                    option(value="") -- Chọn danh mục --
+                    option(value="") -- Select Category --
                         if (category)
                             +select-tree(category, 1, product.product_category_id)
             div(class="form-group form-check form-check-inline") 
@@ -45,7 +45,7 @@ block main
                     value="1"
                     checked=(product.featured == 1 ? true : false)
                 )
-                label(for="featured1" class="form-check-label") Nổi bật  
+                label(for="featured1" class="form-check-label") Featured  
             div(class="form-group form-check form-check-inline") 
                 input(
                     type="radio"
@@ -55,10 +55,10 @@ block main
                     value="0"
                     checked=(product.featured == 0 ? true : false)
                 )
-                label(for="featured0" class="form-check-label") Không 
+                label(for="featured0" class="form-check-label") Not Featured 
 
             div(class="form-group") 
-                label(for="desc") Mô tả
+                label(for="desc") Description
                 textarea(
                     class="form-control textarea-mce"
                     id="desc"
@@ -67,7 +67,7 @@ block main
                 ) #{product.description}
 
             div(class="form-group") 
-                label(for="price") Giá
+                label(for="price") Price
                 input(
                     type="number"
                     class="form-control"
@@ -78,7 +78,7 @@ block main
                 )
 
             div(class="form-group") 
-                label(for="discount") % Giảm giá
+                label(for="discount") % Discount
                 input(
                     type="number"
                     class="form-control"
@@ -89,7 +89,7 @@ block main
                 )
 
             div(class="form-group") 
-                label(for="stock") Số lượng
+                label(for="stock") Stock
                 input(
                     type="number"
                     class="form-control"
@@ -103,7 +103,7 @@ block main
                 class="form-group"
                 upload-image 
             ) 
-                label(for="thumbnail") Ảnh
+                label(for="thumbnail") Thumbnail
                 input(
                     type="file"
                     class="form-control-file"
@@ -119,7 +119,7 @@ block main
                 )
 
             div(class="form-group") 
-                label(for="position") Vị trí
+                label(for="position") Position
                 input(
                     type="number"
                     class="form-control"
@@ -139,7 +139,7 @@ block main
                     value="active"
                     checked=(product.status == "active" ? true : false)
                 )
-                label(for="statusActive" class="form-check-label") Hoạt động 
+                label(for="statusActive" class="form-check-label") Active
 
             div(class="form-group form-check form-check-inline") 
                 input(
@@ -151,10 +151,10 @@ block main
                     checked=(product.status == "inactive" ? true : false)
 
                 )
-                label(for="statusInActive" class="form-check-label") Dừng hoạt động
+                label(for="statusInActive" class="form-check-label") Inactive
         
             div(class="form-group")
                 button(
                     type="submit"
                     class="btn btn-primary"
-                ) Cập nhật 
+                ) Save Changes

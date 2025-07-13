@@ -5,15 +5,14 @@ block main
         +alert-success(5000)
         +alert-error(5000)
 
-
-        h1(class="mb-4") Phân quyền 
+        h1(class="mb-4") Permissions Assignment
 
         div(class="text-right")
             button(
                 type="submit"
                 class="btn btn-primary mb-3"
                 button-submit 
-            ) Cập nhật 
+            ) Update
 
         div(data-records=records)
 
@@ -23,7 +22,7 @@ block main
         )
             thead 
                 tr 
-                    th Tính năng 
+                    th Feature
                     each item in records 
                         th(class="text-center") #{item.title}
             tbody 
@@ -32,107 +31,107 @@ block main
                     each item in records 
                         td(class="text-center")
                             input(type="text" value=item.id)
-                //- Danh mục sản phẩm
+                //- Product Categories
                 tr 
                     td(colspan="4")
-                        b Danh mục sản phẩm 
+                        b Product Categories
                 tr(data-name="products-category_view")
-                    td Xem 
+                    td View 
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="products-category_create")
-                    td Thêm mới
+                    td Create
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="products-category_edit")
-                    td Chỉnh sửa 
+                    td Edit
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
-                tr(data-name="products-categoy_delete")
-                    td Xóa
+                tr(data-name="products-categoy_delete")  // <- Typo in "category"
+                    td Delete
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
 
-                //- Sản phẩm
+                //- Products
                 tr 
                     td(colspan="4")
-                        b Sản phẩm 
+                        b Products
                 tr(data-name="products_view")
-                    td Xem 
+                    td View
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="products_create")
-                    td Thêm mới
+                    td Create
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="products_edit")
-                    td Chỉnh sửa 
+                    td Edit
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="products_delete")
-                    td Xóa
+                    td Delete
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
 
-                //- Nhóm quyền
+                //- Role Groups
                 tr 
                     td(colspan="4")
-                        b Nhóm quyền 
+                        b Role Groups
                 tr(data-name="roles_view")
-                    td Xem 
+                    td View
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="roles_create")
-                    td Thêm mới
+                    td Create
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="roles_edit")
-                    td Chỉnh sửa 
+                    td Edit
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="roles_delete")
-                    td Xóa
+                    td Delete
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="roles_permissions")
-                    td Phân quyền
+                    td Assign Permissions
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
 
-                //- Tài khoản
+                //- Accounts
                 tr 
                     td(colspan="4")
-                        b Tài khoản 
+                        b Accounts
                 tr(data-name="accounts_view")
-                    td Xem 
+                    td View
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="accounts_create")
-                    td Thêm mới
+                    td Create
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="accounts_edit")
-                    td Chỉnh sửa 
+                    td Edit
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")
                 tr(data-name="accounts_delete")
-                    td Xóa
+                    td Delete
                     each item in records 
                         td(class="text-center")
                             input(type="checkbox")

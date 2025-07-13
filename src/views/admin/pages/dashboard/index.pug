@@ -1,12 +1,12 @@
 extends ../../layouts/default.pug 
 
 block main 
-    h1 ダッシュボード
+    h1 Dashboard
 
     .row.mt-4 
         .col-12
             .card.mb-4 
-                .card-header アカウント情報
+                .card-header Account Information
                 .card-body 
                     if(user.avatar)
                         img(
@@ -14,43 +14,43 @@ block main
                             style="height: 100px; margin-bottom: 15px;"
                         )
                     if(user.fullName) 
-                        p 氏名: <b>#{user.fullName}</b>
+                        p Name: <b>#{user.fullName}</b>
                     if(user.email) 
-                        p メールアドレス: <b>#{user.email}</b>
+                        p Email: <b>#{user.email}</b>
                     if(user.phone) 
-                        p 電話番号: <b>#{user.phone}</b>
+                        p Phone: <b>#{user.phone}</b>
                     if(role.title) 
-                        p 権限: <b>#{role.title}</b>
+                        p Role: <b>#{role.title}</b>
 
 
         .col-6 
             .card.mb-4 
-                .card-header 商品カテゴリ
+                .card-header Product Categories
                 .card-body 
-                    p 総数: <b>#{statistic.categoryProduct.total}</b>
-                    p 有効: <b>#{statistic.categoryProduct.active}</b>
-                    p 無効: <b>#{statistic.categoryProduct.inactive}</b>
+                    p Amount: <b>#{statistic.categoryProduct.total}</b>
+                    p Active: <b>#{statistic.categoryProduct.active}</b>
+                    p Inactive: <b>#{statistic.categoryProduct.inactive}</b>
 
         .col-6 
             .card.mb-4 
-                .card-header 商品
+                .card-header Products
                 .card-body 
-                    p 総数: <b>#{statistic.product.total}</b>
-                    p 有効: <b>#{statistic.product.active}</b>
-                    p 無効: <b>#{statistic.product.inactive}</b>
+                    p Amount: <b>#{statistic.product.total}</b>
+                    p Active: <b>#{statistic.product.active}</b>
+                    p Inactive: <b>#{statistic.product.inactive}</b>
 
         .col-6 
             .card.mb-4 
-                .card-header 管理者アカウント
+                .card-header Accounts
                 .card-body 
-                    p 総数: <b>#{statistic.account.total}</b>
-                    p 有効: <b>#{statistic.account.active}</b>
-                    p 無効: <b>#{statistic.account.inactive}</b>
+                    p Amount: <b>#{statistic.account.total}</b>
+                    p Active: <b>#{statistic.account.active}</b>
+                    p Inactive: <b>#{statistic.account.inactive}</b>
 
         .col-6 
             .card.mb-4 
                 .card-header クライアントアカウント
                 .card-body 
-                    p 総数: <b>#{statistic.user.total}</b>
-                    p 有効: <b>#{statistic.user.active}</b>
-                    p 無効: <b>#{statistic.user.inactive}</b>
+                    p Amount: <b>#{statistic.user.total}</b>
+                    p Active: <b>#{statistic.user.active}</b>
+                    p Inactive: <b>#{statistic.user.inactive}</b>

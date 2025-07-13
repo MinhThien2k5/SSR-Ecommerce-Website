@@ -4,7 +4,7 @@ include ../../mixins/select-tree.pug
 
 block main
     if (role.permissions.includes("products-category_create"))
-        h1(class="mb-4") Thêm mới danh mục sản phẩm 
+        h1(class="mb-4") Add New Product Category
 
         +alert-error(5000)
 
@@ -14,7 +14,7 @@ block main
             enctype="multipart/form-data"
         )
             div(class="form-group") 
-                label(for="title") Tiêu đề
+                label(for="title") Title
                 input(
                     type="text"
                     class="form-control"
@@ -24,24 +24,18 @@ block main
                 )
 
             div(class="form-group") 
-                label(for="parent_id") Danh mục cha
-                //- input(
-                //-     name="parent_id"
-                //-     id="parent_id"
-                //-     class="form-control"
-                //- ) 
+                label(for="parent_id") Parent Category
                 select(
                     name="parent_id"
                     id="parent_id"
                     class="form-control"
                 )
-                    option(value="") -- Chọn danh mục cha --
+                    option(value="") -- Select Parent Category --
                         if (records)
                             +select-tree(records)
-                
 
             div(class="form-group") 
-                label(for="desc") Mô tả
+                label(for="desc") Description
                 textarea(
                     type="text"
                     class="form-control textarea-mce"
@@ -55,7 +49,7 @@ block main
                 class="form-group"
                 upload-image 
             ) 
-                label(for="thumbnail") Ảnh
+                label(for="thumbnail") Image
                 input(
                     type="file"
                     class="form-control-file"
@@ -71,13 +65,13 @@ block main
                 )
 
             div(class="form-group") 
-                label(for="position") Vị trí
+                label(for="position") Position
                 input(
                     type="number"
                     class="form-control"
                     id="position"
                     name="position"
-                    placeholder="Tự động tăng"
+                    placeholder="Auto increment"
                     min="1"
                 )
 
@@ -90,7 +84,7 @@ block main
                     value="active"
                     checked
                 )
-                label(for="statusActive" class="form-check-label") Hoạt động 
+                label(for="statusActive" class="form-check-label") Active
 
             div(class="form-group form-check form-check-inline") 
                 input(
@@ -100,11 +94,10 @@ block main
                     name="status"
                     value="inactive"
                 )
-                label(for="statusInActive" class="form-check-label") Dừng hoạt động
+                label(for="statusInActive" class="form-check-label") Inactive
         
             div(class="form-group")
                 button(
                     type="submit"
                     class="btn btn-primary"
-                ) Tạo mới 
-
+                ) Create

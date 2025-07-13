@@ -3,11 +3,11 @@ mixin pagination(pagination)
         ul.pagination
             if (pagination.currentPage !== 1)
                 li.page-item 
-                    button.page-link(button-pagination=1) Về đầu trang
+                    button.page-link(button-pagination=1) First Page
 
             if (pagination.currentPage > 1)
                 li.page-item 
-                    button.page-link(button-pagination=pagination.currentPage - 1) Trang trước
+                    button.page-link(button-pagination=pagination.currentPage - 1) Previous
                 
             - for (var i = 1; i <= pagination.totalPage; i++)
                 li(class=`page-item ${pagination.currentPage == i ? "active" : ""}`)
@@ -15,8 +15,8 @@ mixin pagination(pagination)
 
             if (pagination.currentPage < pagination.totalPage)
                 li.page-item
-                    button.page-link(button-pagination=pagination.currentPage + 1) Kế tiếp
+                    button.page-link(button-pagination=pagination.currentPage + 1) Next
 
-            if (pagination.currentPage !== totalPage)
+            if (pagination.currentPage !== pagination.totalPage)
                 li.page-item 
-                    button.page-link(button-pagination=pagination.totalPage) Về cuối trang
+                    button.page-link(button-pagination=pagination.totalPage) Last Page

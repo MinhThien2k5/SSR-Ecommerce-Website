@@ -12,10 +12,10 @@ block main
   if (role.permissions.includes("products_view"))            
     +alert-success("5000")
 
-    h1 Danh sách sản phẩm
+    h1 Product Management
 
     .card.mb-3
-      .card-header Bộ lọc và tìm kiếm
+      .card-header Filter and Search
       .card-body
         .row
           .col-6.d-flex.align-items-center
@@ -24,14 +24,14 @@ block main
             +search(keyword)
 
     .card.mb-3
-      .card-header Danh sách sản phẩm
+      .card-header Products List
       .card-body
         .row.mb-3
           .col-8
             +form-change-multi(`${prefixAdmin}/products/change-multi?_method=PATCH`)
           .col-4.text-end
             if (role.permissions.includes("products_create"))
-              a.btn.btn-outline-success(href=`${prefixAdmin}/products/create`) + Thêm mới
+              a.btn.btn-outline-success(href=`${prefixAdmin}/products/create`) + Create New Product
           .col-6
             +sort()
 
@@ -40,15 +40,15 @@ block main
             tr
               th
                 input(type="checkbox" name="checkall")
-              th STT
-              th Hình ảnh
-              th Tiêu đề
-              th Giá
-              th Vị trí
-              th Trạng thái
-              th Người tạo
-              th Người cập nhật
-              th Hành động
+              th No.
+              th Image
+              th Title
+              th Price
+              th Position
+              th Status
+              th Creator
+              th Editor
+              th Actions
           tbody
             each item, index in products
               tr
@@ -74,13 +74,13 @@ block main
                         button-change-status 
                         data-status=item.status 
                         data-id=item.id
-                      ) Hoạt động
+                      ) Active
                     else
                       button.badge.bg-danger(
                         button-change-status 
                         data-status=item.status 
                         data-id=item.id
-                      ) Dừng hoạt động
+                      ) Inactive
                 td 
                   p #{item.accountFullName}
                   p
@@ -94,16 +94,16 @@ block main
                 td
                   a.btn.btn-dark.btn-sm.ml-1(
                     href=`${prefixAdmin}/products/detail/${item.id}`
-                  ) Chi tiết
+                  ) Detail
                   if (role.permissions.includes("products_edit"))            
                     a.btn.btn-warning.btn-sm.ml-1(
                       href=`${prefixAdmin}/products/edit/${item.id}`
-                    ) Sửa
+                    ) Edit
                   if (role.permissions.includes("products_delete"))
                     button.btn.btn-danger.btn-sm.ml-1(
                       button-delete 
                       data-id=item.id
-                    ) Xóa
+                    ) Delete
 
     form#form-change-status(action="", method="POST", data-path=`${prefixAdmin}/products/change-status`)
     form#form-delete-item(action="", method="POST", data-path=`${prefixAdmin}/products/delete`)
