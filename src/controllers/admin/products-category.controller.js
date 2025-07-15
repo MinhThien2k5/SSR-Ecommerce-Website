@@ -115,7 +115,7 @@ module.exports.editPatch = async (req, res) => {
     await ProductCategory.updateOne({ _id: id }, req.body);
 
     req.flash("success", "Cập nhật danh mục thành công!");
-    res.redirect(req.get("referer"));
+    res.redirect(`${systemConfig.prefixAdmin}/products-category`);
   } catch (error) {
     console.error("Lỗi cập nhật danh mục:", error);
     req.flash("error", "Cập nhật thất bại!");

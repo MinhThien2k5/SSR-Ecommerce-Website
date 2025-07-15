@@ -41,22 +41,26 @@ module.exports.addPost = async (req, res) => {
   const productId = req.params.productId;
   const quantity = parseInt(req.body.quantity);
 
-  const cart = await Cart.findOne({
-    _id: cartId,
-  });
+  let cart = await Cart.findOne({ _id: cartId });
+
+  // Nếu không tìm thấy giỏ hàng, tạo mới
+  if (!cart) {
+    cart = await Cart.create({
+      products: [],
+    });
+    res.cookie("cartId", cart._id, { httpOnly: true });
+  }
 
   const existProductInCart = cart.products.find(
     (item) => item.product_id == productId
   );
-  // console.log(existProductInCart);
 
   if (existProductInCart) {
     const newQuantity = quantity + existProductInCart.quantity;
-    console.log(newQuantity);
 
     await Cart.updateOne(
       {
-        _id: cartId,
+        _id: cart._id,
         "products.product_id": productId,
       },
       {
@@ -71,7 +75,7 @@ module.exports.addPost = async (req, res) => {
 
     await Cart.updateOne(
       {
-        _id: cartId,
+        _id: cart._id,
       },
       {
         $push: { products: objectCart },
@@ -80,7 +84,6 @@ module.exports.addPost = async (req, res) => {
   }
 
   req.flash("success", "Thêm sản phẩm vào giỏ hàng thành công!");
-
   res.redirect(req.get("referer") || "/");
 };
 

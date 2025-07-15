@@ -1,49 +1,49 @@
 const Cart = require("../../app/models/cart.model");
 
 module.exports.cartId = async (req, res, next) => {
+  const expiresTime = 1000 * 60 * 60 * 24 * 365;
   let cartId = req.session.cartId || req.cookies.cartId;
+  let cart;
 
   if (!cartId) {
-    const newCart = new Cart();
-    await newCart.save();
+    cart = new Cart();
+    await cart.save();
+    cartId = cart._id.toString();
 
-    cartId = newCart._id.toString();
     req.session.cartId = cartId;
-    res.cookie("cartId", cartId, {
-      maxAge: 1000 * 60 * 60 * 24 * 365, // 1 năm
-    });
+    res.cookie("cartId", cartId, { maxAge: expiresTime });
 
     console.log("✅ Created new cart:", cartId);
-    res.locals.miniCart = newCart;
-    return next();
   }
 
   try {
-    const cart = await Cart.findById(cartId);
+    cart = await Cart.findById(cartId);
 
     if (!cart) {
-      // Cart ID không hợp lệ --> tạo cart mới
-      const newCart = new Cart();
-      await newCart.save();
+      cart = new Cart();
+      await cart.save();
 
-      cartId = newCart._id.toString();
+      cartId = cart._id.toString();
       req.session.cartId = cartId;
-      res.cookie("cartId", cartId, {
-        maxAge: 1000 * 60 * 60 * 24 * 365,
-      });
+      res.cookie("cartId", cartId, { maxAge: expiresTime });
 
-      res.locals.miniCart = newCart;
-    } else {
-      // Cart hợp lệ --> dùng lại
-      req.session.cartId = cartId;
-      cart.totalQuantity = cart.products.reduce(
-        (sum, item) => sum + item.quantity,
-        0
-      );
-      res.locals.miniCart = cart;
+      console.log("✅ Recreated new cart:", cartId);
     }
+
+    // 🔥 Đảm bảo mảng products tồn tại
+    if (!Array.isArray(cart.products)) cart.products = [];
+
+    // ✅ Tính lại totalQuantity
+    cart.totalQuantity = cart.products.reduce(
+      (sum, item) => sum + (item.quantity || 0),
+      0
+    );
+
+    // ✅ Gán miniCart vào locals
+    res.locals.miniCart = cart;
   } catch (err) {
     console.error("❌ Error in cartId middleware:", err);
+    res.locals.miniCart = { products: [], totalQuantity: 0 }; // fallback an toàn
   }
 
   next();
