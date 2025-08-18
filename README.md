@@ -4,6 +4,8 @@ A web application built with **Node.js**, **Express**, **MongoDB (Mongoose)**, a
 This project includes features such as product management, image upload to Cloudinary, user authentication with email/OTP, and rendering with Pug.
 
 ---
+## 🎥 Demo Video
+[![Watch the video](https://img.youtube.com/vi/lDsVRNv5X0s/0.jpg)](https://youtu.be/lDsVRNv5X0s)
 
 ## 🚀 Tech Stack
 
@@ -64,5 +66,6 @@ If you face MongoDB connection timeout on Vercel:
 Go to MongoDB Atlas → Network Access → add IP 0.0.0.0/0
 
 Check your MONGO_URL environment variable on Vercel
+
 
 
