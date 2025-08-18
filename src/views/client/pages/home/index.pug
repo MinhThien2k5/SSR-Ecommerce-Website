@@ -24,7 +24,7 @@ block main
             .row 
                 each category in categories
                     .col-3
-                        a(href=`/products?category=${category.slug}`)
+                        a(href=`/products/${category.slug}`)
                             img(src=category.thumbnail, alt=category.name, class="img-fluid")
                             h3 #{category.name}
     

@@ -27,10 +27,10 @@ block main
                         div(class="inner-price-old") #{Number(product.price).toLocaleString("vi-VN")}VND
 
                     if (product.discountPercentage) 
-                        div(class="inner-percent") Giảm tới: <span>#{product.discountPercentage}%</span>
+                        div(class="inner-percent") Sale: <span>#{product.discountPercentage}%</span>
 
                     if (product.stock) 
-                        div(class="inner-stock") Còn lại: <span>#{product.stock}</span> sản phẩm
+                        div(class="inner-stock") Stock: <span>#{product.stock}</span> left
                     if (product.stock > 0)
                         form(
                             action=`/cart/add/${product.id}`
@@ -47,18 +47,18 @@ block main
                             button(
                                 type="submit"
                                 class="btn btn-success btn-block"
-                            ) Thêm vào giỏ hàng 
+                            ) Add to Cart
                     else
-                        div(class="text-danger mt-3 fw-bold") Sản phẩm đã hết hàng
+                        div(class="text-danger mt-3 fw-bold") Out of Stock
         hr
 
         .container.my-5
             .row 
                 .col-12 
-                    +box-head("Mô tả sản phẩm")
+                    +box-head("Product Description")
                     .inner-desc !{product.description}
 
             button(
                 class="btn btn-secondary"
                 button-go-back 
-            ) Trở lại 
+            ) Go Back
