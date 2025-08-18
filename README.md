@@ -22,7 +22,7 @@ This project includes features such as product management, image upload to Cloud
 Clone the project:
 
 ```bash
-git clone <repository-url>
+git clone git clone https://github.com/MinhThien2k5/SSR-Ecommerce-Website.git
 cd projectjs
 
 Install dependencies
@@ -30,8 +30,10 @@ npm install
 
 Development
 npm run dev
+
 Production
 npm start
+
 Default app URL:
 👉 http://localhost:3000
 
@@ -62,4 +64,5 @@ If you face MongoDB connection timeout on Vercel:
 Go to MongoDB Atlas → Network Access → add IP 0.0.0.0/0
 
 Check your MONGO_URL environment variable on Vercel
+
 
