@@ -1,7 +1,17 @@
-# ProjectJS
+# SSR-Ecommerce-Website
 
 A web application built with **Node.js**, **Express**, **MongoDB (Mongoose)**, and other supporting tools.  
 This project includes features such as product management, image upload to Cloudinary, user authentication with email/OTP, and rendering with Pug.
+
+# 🔑 Admin Account
+
+To access the Admin Dashboard, go to:
+
+👉 http://localhost:3000/admin/auth/login
+
+Use the default credentials:
+Email: admin@gmail.com
+Password: 123456
 
 ---
 ## 🎥 Demo Video
@@ -66,6 +76,7 @@ If you face MongoDB connection timeout on Vercel:
 Go to MongoDB Atlas → Network Access → add IP 0.0.0.0/0
 
 Check your MONGO_URL environment variable on Vercel
+
 
 
 
